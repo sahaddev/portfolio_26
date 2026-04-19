@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'core/theme/app_theme.dart';
+import 'sections/projects_section.dart';
 import 'sections/service_provider.dart';
 
 void main() {
@@ -37,8 +38,8 @@ class PortfolioHomePage extends StatelessWidget {
             // HeaderSection(),
             // AboutSection(),
             // SkillsSection(),
-            ServiceProvider(),
-            // ProjectsSection(),
+            // ServiceProvider(),
+            ProjectsSection(),
             // ContactSection(),
           ],
         ),
