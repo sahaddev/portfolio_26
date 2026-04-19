@@ -27,7 +27,7 @@ class HeaderSection extends StatelessWidget {
                 shape: BoxShape.circle,
                 gradient: RadialGradient(
                   colors: [
-                    AppColors.primary.withOpacity(0.05),
+                    AppColors.primary.withValues(alpha: 0.05),
                     Colors.transparent,
                   ],
                 ),
@@ -81,10 +81,10 @@ class _Navbar extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
           decoration: BoxDecoration(
-            color: AppColors.surfaceVariant.withOpacity(0.4),
+            color: AppColors.surfaceVariant.withValues(alpha: 0.4),
             border: Border(
               bottom: BorderSide(
-                color: AppColors.outlineVariant.withOpacity(0.2),
+                color: AppColors.outlineVariant.withValues(alpha: 0.2),
                 width: 1,
               ),
             ),
@@ -136,7 +136,7 @@ class _Navbar extends StatelessWidget {
                   color: AppColors.primary,
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primary.withOpacity(0.5),
+                      color: AppColors.primary.withValues(alpha: 0.5),
                       blurRadius: 10,
                       spreadRadius: 2,
                     ),
@@ -174,7 +174,7 @@ class _HireMeButton extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withOpacity(0.3),
+            color: AppColors.primary.withValues(alpha: 0.3),
             blurRadius: 15,
             offset: const Offset(0, 4),
           ),
@@ -208,7 +208,7 @@ class _HeroContent extends StatelessWidget {
             color: AppColors.surfaceContainerLow,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: AppColors.outlineVariant.withOpacity(0.2),
+              color: AppColors.outlineVariant.withValues(alpha: 0.2),
             ),
           ),
           child: Text(
@@ -234,6 +234,7 @@ class _HeroContent extends StatelessWidget {
                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
                   fontSize: 28.sp,
                   height: 1.1,
+                  color: null,
                   foreground: Paint()
                     ..shader = const LinearGradient(
                       colors: [AppColors.primary, AppColors.primaryContainer],
@@ -286,7 +287,7 @@ class _PrimaryButton extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: AppColors.surfaceTint.withOpacity(0.3),
+            color: AppColors.surfaceTint.withValues(alpha: 0.3),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -317,7 +318,7 @@ class _SecondaryButton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: AppColors.primary.withOpacity(0.4),
+          color: AppColors.primary.withValues(alpha: 0.4),
           width: 1.5,
         ),
       ),
@@ -348,7 +349,7 @@ class _ProfileIllustration extends StatelessWidget {
               shape: BoxShape.circle,
               gradient: RadialGradient(
                 colors: [
-                  AppColors.primary.withOpacity(0.15),
+                  AppColors.primary.withValues(alpha: 0.15),
                   Colors.transparent,
                 ],
               ),
@@ -362,7 +363,7 @@ class _ProfileIllustration extends StatelessWidget {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.4),
+                  color: Colors.black.withValues(alpha: 0.4),
                   blurRadius: 40,
                   spreadRadius: 10,
                 ),
@@ -422,10 +423,10 @@ class _FloatingGlassIcon extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(1.5.w),
           decoration: BoxDecoration(
-            color: AppColors.surfaceContainerHigh.withOpacity(0.4),
+            color: AppColors.surfaceContainerHigh.withValues(alpha: 0.4),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: AppColors.outlineVariant.withOpacity(0.1),
+              color: AppColors.outlineVariant.withValues(alpha: 0.1),
             ),
           ),
           child: Icon(
