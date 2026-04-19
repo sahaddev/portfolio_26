@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'core/theme/app_theme.dart';
-import 'sections/about_section.dart';
 
 void main() {
   runApp(const PortfolioApp());
@@ -35,7 +34,7 @@ class PortfolioHomePage extends StatelessWidget {
         child: Column(
           children: const [
             // HeaderSection(),
-            AboutSection(),
+            // AboutSection(),
             // SkillsSection(),
             // ProjectsSection(),
             // ContactSection(),
