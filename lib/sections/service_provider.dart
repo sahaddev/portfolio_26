@@ -84,7 +84,7 @@ class ServiceProvider extends StatelessWidget {
                   constraints.maxWidth > 650 && constraints.maxWidth <= 1000;
 
               int crossAxisCount = isDesktop ? 4 : (isTablet ? 2 : 1);
-              double aspectRatio = isDesktop ? 0.85 : (isTablet ? 1.1 : 1.4);
+              double aspectRatio = isDesktop ? 0.7 : (isTablet ? 0.85 : 1.2);
 
               return GridView.builder(
                 shrinkWrap: true,
@@ -164,14 +164,14 @@ class _SkillCardState extends State<_SkillCard> {
               ClipRRect(
                 child: Image.network(
                   widget.skill.iconUrl,
-                  height: 6.h,
+                  height: 40.0,
                   color: AppColors.primary,
                   colorBlendMode: BlendMode.srcIn,
                   errorBuilder: (context, error, stackTrace) =>
-                      Icon(Icons.code, size: 6.h, color: AppColors.primary),
+                      const Icon(Icons.code, size: 40.0, color: AppColors.primary),
                 ),
               ),
-              SizedBox(height: 3.h),
+              const SizedBox(height: 12.0),
               Text(
                 widget.skill.title,
                 textAlign: TextAlign.center,
@@ -181,7 +181,7 @@ class _SkillCardState extends State<_SkillCard> {
                   color: AppColors.onSurface,
                 ),
               ),
-              SizedBox(height: 1.5.h),
+              const SizedBox(height: 8.0),
               Text(
                 widget.skill.description,
                 textAlign: TextAlign.center,
