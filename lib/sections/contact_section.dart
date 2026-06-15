@@ -86,13 +86,16 @@ class _ContactDetails extends StatelessWidget {
           ),
         ),
         SizedBox(height: 5.h),
-        _ContactInfoItem(icon: Icons.email_outlined, text: 'google@gmail.com'),
+        _ContactInfoItem(
+          icon: Icons.email_outlined,
+          text: 'sahaddev@gmail.com',
+        ),
         SizedBox(height: 2.h),
-        _ContactInfoItem(icon: Icons.phone_outlined, text: '+92 30000000'),
+        _ContactInfoItem(icon: Icons.phone_outlined, text: '+91 7306713024'),
         SizedBox(height: 2.h),
         _ContactInfoItem(
           icon: Icons.location_on_outlined,
-          text: 'Lahore, Punjab,\nPakistan',
+          text: 'Kannur, Kerala, India',
         ),
       ],
     );
