@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 import 'dart:math' as math;
+import '../core/constants/app_assets.dart';
 import '../core/theme/app_theme.dart';
 
 class HeaderSection extends StatelessWidget {
@@ -47,7 +48,7 @@ class HeaderSection extends StatelessWidget {
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const _HeroContent(),
+                          _HeroContent(onNavTap),
                           SizedBox(height: 10.h),
                           _ProfileIllustration(),
                         ],
@@ -56,7 +57,7 @@ class HeaderSection extends StatelessWidget {
                     return Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Expanded(flex: 5, child: _HeroContent()),
+                        Expanded(flex: 5, child: _HeroContent(onNavTap)),
                         SizedBox(width: 5.w),
                         Expanded(flex: 5, child: _ProfileIllustration()),
                       ],
@@ -97,7 +98,7 @@ class _Navbar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'LUMINESCENT.DEV',
+                'SAHADMP.DEV',
                 style: GoogleFonts.inter(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w900,
@@ -120,7 +121,7 @@ class _Navbar extends StatelessWidget {
                     ),
                     _navItem('Contact', onTap: () => onNavTap?.call('Contact')),
                     SizedBox(width: 4.w),
-                    const _HireMeButton(),
+                    _HireMeButton(onNavTap),
                   ],
                 ),
             ],
@@ -173,33 +174,37 @@ class _Navbar extends StatelessWidget {
 }
 
 class _HireMeButton extends StatelessWidget {
-  const _HireMeButton();
+  final Function(String)? onNavTap;
+  const _HireMeButton(this.onNavTap);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.2.h),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        gradient: const LinearGradient(
-          colors: [AppColors.primary, AppColors.primaryContainer],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primary.withValues(alpha: 0.3),
-            blurRadius: 15,
-            offset: const Offset(0, 4),
+    return GestureDetector(
+      onTap: () => onNavTap?.call('Contact'),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.2.h),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          gradient: const LinearGradient(
+            colors: [AppColors.primary, AppColors.primaryContainer],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-        ],
-      ),
-      child: Text(
-        'Hire Me',
-        style: GoogleFonts.inter(
-          color: AppColors.background,
-          fontWeight: FontWeight.bold,
-          fontSize: 12.sp,
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.primary.withValues(alpha: 0.3),
+              blurRadius: 15,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Text(
+          'Hire Me',
+          style: GoogleFonts.inter(
+            color: AppColors.background,
+            fontWeight: FontWeight.bold,
+            fontSize: 12.sp,
+          ),
         ),
       ),
     );
@@ -207,7 +212,8 @@ class _HireMeButton extends StatelessWidget {
 }
 
 class _HeroContent extends StatelessWidget {
-  const _HeroContent();
+  const _HeroContent(this.onNavTap);
+  final Function(String)? onNavTap;
 
   @override
   Widget build(BuildContext context) {
@@ -244,7 +250,7 @@ class _HeroContent extends StatelessWidget {
                 ),
               ),
               TextSpan(
-                text: 'Sajid\nYaqub',
+                text: 'Sahad',
                 style: Theme.of(context).textTheme.displayLarge?.copyWith(
                   fontSize: 28.sp,
                   height: 1.1,
@@ -272,9 +278,19 @@ class _HeroContent extends StatelessWidget {
         SizedBox(height: 4.h),
         Row(
           children: [
-            _PrimaryButton(text: 'View Projects', onPressed: () {}),
+            _PrimaryButton(
+              text: 'View Projects',
+              onPressed: () {
+                onNavTap?.call('Projects');
+              },
+            ),
             SizedBox(width: 2.w),
-            _SecondaryButton(text: 'Let\'s Collaborate', onPressed: () {}),
+            _SecondaryButton(
+              text: 'Let\'s Collaborate',
+              onPressed: () {
+                onNavTap?.call('Contact');
+              },
+            ),
           ],
         ),
       ],
@@ -290,29 +306,32 @@ class _PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        gradient: const LinearGradient(
-          colors: [AppColors.primary, AppColors.primaryDim],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.surfaceTint.withValues(alpha: 0.3),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
+    return GestureDetector(
+      onTap: () => onPressed(),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          gradient: const LinearGradient(
+            colors: [AppColors.primary, AppColors.primaryDim],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-        ],
-      ),
-      child: Text(
-        text,
-        style: GoogleFonts.inter(
-          color: AppColors.background,
-          fontWeight: FontWeight.bold,
-          fontSize: 12.sp,
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.surfaceTint.withValues(alpha: 0.3),
+              blurRadius: 20,
+              offset: const Offset(0, 10),
+            ),
+          ],
+        ),
+        child: Text(
+          text,
+          style: GoogleFonts.inter(
+            color: AppColors.background,
+            fontWeight: FontWeight.bold,
+            fontSize: 12.sp,
+          ),
         ),
       ),
     );
@@ -327,21 +346,24 @@ class _SecondaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: AppColors.primary.withValues(alpha: 0.4),
-          width: 1.5,
+    return GestureDetector(
+      onTap: () => onPressed(),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: AppColors.primary.withValues(alpha: 0.4),
+            width: 1.5,
+          ),
         ),
-      ),
-      child: Text(
-        text,
-        style: GoogleFonts.inter(
-          color: AppColors.primary,
-          fontWeight: FontWeight.bold,
-          fontSize: 12.sp,
+        child: Text(
+          text,
+          style: GoogleFonts.inter(
+            color: AppColors.primary,
+            fontWeight: FontWeight.bold,
+            fontSize: 12.sp,
+          ),
         ),
       ),
     );
@@ -401,12 +423,10 @@ class _ProfileIllustration extends StatelessWidget {
           Container(
             width: 32.w,
             height: 32.w,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              image: const DecorationImage(
-                image: NetworkImage(
-                  'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-                ),
+              image: DecorationImage(
+                image: AssetImage(AppAssets.profileImage),
                 fit: BoxFit.cover,
               ),
             ),
