@@ -10,34 +10,44 @@ class SkillsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final skills = [
       _Skill(
-        'Tailwind CSS',
-        'Creating responsive, modern, and clean layouts quickly using utility-first styling.',
-        'https://static-00.iconduck.com/assets.00/tailwind-css-icon-2048x1229-9vo9v881.png',
+        'Languages',
+        'Dart, JavaScript',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Dart_programming_language_logo.svg/1024px-Dart_programming_language_logo.svg.png',
       ),
       _Skill(
-        'JavaScript',
-        'Writing efficient, modern, and optimized code for both frontend and backend logic.',
-        'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png',
+        'Frameworks',
+        'Flutter',
+        'https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png',
       ),
       _Skill(
-        'React',
-        'Building fast, interactive, and component-based UIs with clean state management.',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png',
-      ),
-      _Skill(
-        'Node.js',
-        'Developing scalable backend logic and high-performance server-side applications.',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/2560px-Node.js_logo.svg.png',
-      ),
-      _Skill(
-        'MongoDB',
-        'Managing NoSQL databases with flexible schemas for high-performance data storage.',
+        'Database',
+        'Hive, sqflite, MongoDB',
         'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/2560px-MongoDB_Logo.svg.png',
       ),
       _Skill(
-        'HTML',
-        'Creating clean, well-structured page layouts with semantic markup for better accessibility and SEO.',
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1024px-HTML5_logo_and_wordmark.svg.png',
+        'AWS',
+        'EC2, Route53',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1024px-Amazon_Web_Services_Logo.svg.png',
+      ),
+      _Skill(
+        'Architecture',
+        'Model-View-Controller (MVC), Clean Architecture',
+        'https://cdn-icons-png.flaticon.com/512/2115/2115958.png',
+      ),
+      _Skill(
+        'State Management',
+        'BLoC, Cubit, Provider, GetX',
+        'https://cdn-icons-png.flaticon.com/512/3242/3242257.png',
+      ),
+      _Skill(
+        'Familiar',
+        'Data Structures and Algorithms, RESTful API, Asynchronous Programming',
+        'https://cdn-icons-png.flaticon.com/512/1006/1006363.png',
+      ),
+      _Skill(
+        'Dev Tools',
+        'Visual Studio Code, Git, GitHub, Postman, Bruno, Flutter Inspector, Dart DevTools',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png',
       ),
     ];
 
@@ -173,7 +183,7 @@ class _SkillCardState extends State<_SkillCard> {
                 textAlign: TextAlign.center,
                 maxLines: 3,
                 style: GoogleFonts.inter(
-                  fontSize: 10.sp,
+                  fontSize: 12.sp,
                   color: AppColors.onSurfaceVariant,
                   height: 1.5,
                 ),
