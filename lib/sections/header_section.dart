@@ -6,7 +6,9 @@ import 'dart:math' as math;
 import '../core/theme/app_theme.dart';
 
 class HeaderSection extends StatelessWidget {
-  const HeaderSection({super.key});
+  final Function(String)? onNavTap;
+
+  const HeaderSection({super.key, this.onNavTap});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class HeaderSection extends StatelessWidget {
           ),
           Column(
             children: [
-              const _Navbar(),
+              _Navbar(onNavTap: onNavTap),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                 child: LayoutBuilder(
@@ -71,7 +73,9 @@ class HeaderSection extends StatelessWidget {
 }
 
 class _Navbar extends StatelessWidget {
-  const _Navbar();
+  final Function(String)? onNavTap;
+
+  const _Navbar({this.onNavTap});
 
   @override
   Widget build(BuildContext context) {
@@ -104,11 +108,17 @@ class _Navbar extends StatelessWidget {
               if (MediaQuery.of(context).size.width > 700)
                 Row(
                   children: [
-                    _navItem('Home', active: true),
-                    _navItem('About'),
-                    _navItem('Services'),
-                    _navItem('Projects'),
-                    _navItem('Contact'),
+                    _navItem('Home', onTap: () => onNavTap?.call('Home')),
+                    _navItem('About', onTap: () => onNavTap?.call('About')),
+                    _navItem(
+                      'Services',
+                      onTap: () => onNavTap?.call('Services'),
+                    ),
+                    _navItem(
+                      'Projects',
+                      onTap: () => onNavTap?.call('Projects'),
+                    ),
+                    _navItem('Contact', onTap: () => onNavTap?.call('Contact')),
                     SizedBox(width: 4.w),
                     const _HireMeButton(),
                   ],
@@ -120,39 +130,43 @@ class _Navbar extends StatelessWidget {
     );
   }
 
-  Widget _navItem(String title, {bool active = false}) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 1.5.w),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          if (active)
-            Positioned(
-              top: -10,
-              child: Container(
-                width: 20,
-                height: 2,
-                decoration: BoxDecoration(
-                  color: AppColors.primary,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.primary.withValues(alpha: 0.5),
-                      blurRadius: 10,
-                      spreadRadius: 2,
-                    ),
-                  ],
+  Widget _navItem(String title, {bool active = false, VoidCallback? onTap}) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 1.5.w, vertical: 1.h),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            if (active)
+              Positioned(
+                top: -10,
+                child: Container(
+                  width: 20,
+                  height: 2,
+                  decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.primary.withValues(alpha: 0.5),
+                        blurRadius: 10,
+                        spreadRadius: 2,
+                      ),
+                    ],
+                  ),
                 ),
               ),
+            Text(
+              title,
+              style: GoogleFonts.inter(
+                color: active ? AppColors.primary : AppColors.onSurfaceVariant,
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          Text(
-            title,
-            style: GoogleFonts.inter(
-              color: active ? AppColors.primary : AppColors.onSurfaceVariant,
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -201,23 +215,23 @@ class _HeroContent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          margin: EdgeInsets.only(top: 20.h),
-          decoration: BoxDecoration(
-            color: AppColors.surfaceContainerLow,
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: AppColors.outlineVariant.withValues(alpha: 0.2),
-            ),
-          ),
-          child: Text(
-            'AVAILABLE FOR NEW PROJECTS',
-            style: Theme.of(
-              context,
-            ).textTheme.labelMedium!.copyWith(fontSize: 12.sp),
-          ),
-        ),
+        // Container(
+        //   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        //   margin: EdgeInsets.only(top: 20.h),
+        //   decoration: BoxDecoration(
+        //     color: AppColors.surfaceContainerLow,
+        //     borderRadius: BorderRadius.circular(20),
+        //     border: Border.all(
+        //       color: AppColors.outlineVariant.withValues(alpha: 0.2),
+        //     ),
+        //   ),
+        //   child: Text(
+        //     'AVAILABLE FOR NEW PROJECTS',
+        //     style: Theme.of(
+        //       context,
+        //     ).textTheme.labelMedium!.copyWith(fontSize: 12.sp),
+        //   ),
+        // ),
         SizedBox(height: 4.h),
         RichText(
           text: TextSpan(

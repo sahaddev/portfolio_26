@@ -30,22 +30,62 @@ class PortfolioApp extends StatelessWidget {
   }
 }
 
-class PortfolioHomePage extends StatelessWidget {
+class PortfolioHomePage extends StatefulWidget {
   const PortfolioHomePage({super.key});
+
+  @override
+  State<PortfolioHomePage> createState() => _PortfolioHomePageState();
+}
+
+class _PortfolioHomePageState extends State<PortfolioHomePage> {
+  final headerKey = GlobalKey();
+  final aboutKey = GlobalKey();
+  final servicesKey = GlobalKey();
+  final projectsKey = GlobalKey();
+  final contactKey = GlobalKey();
+
+  void scrollToSection(GlobalKey key) {
+    Scrollable.ensureVisible(
+      key.currentContext!,
+      duration: const Duration(seconds: 1),
+      curve: Curves.easeInOutCubic,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: const [
-            HeaderSection(),
-            AboutSection(),
-            SkillsSection(),
-            ServiceProvider(),
-            ProjectsSection(),
+          children: [
+            HeaderSection(
+              key: headerKey,
+              onNavTap: (String section) {
+                switch (section) {
+                  case 'Home':
+                    scrollToSection(headerKey);
+                    break;
+                  case 'About':
+                    scrollToSection(aboutKey);
+                    break;
+                  case 'Services':
+                    scrollToSection(servicesKey);
+                    break;
+                  case 'Projects':
+                    scrollToSection(projectsKey);
+                    break;
+                  case 'Contact':
+                    scrollToSection(contactKey);
+                    break;
+                }
+              },
+            ),
+            AboutSection(key: aboutKey),
+            const SkillsSection(),
+            ServiceProvider(key: servicesKey),
+            ProjectsSection(key: projectsKey),
             // ReviewSection(),
-            ContactSection(),
+            ContactSection(key: contactKey),
           ],
         ),
       ),
