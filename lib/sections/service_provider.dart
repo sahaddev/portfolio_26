@@ -10,44 +10,44 @@ class ServiceProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     final skills = [
       _Skill(
-        'Full-Stack Web Development',
-        'End-to-end web applications using React, Node.js, Express, and MongoDB with clean architecture and scalable code.',
+        'Mobile App Development',
+        'Building high-performance, cross-platform mobile applications for iOS and Android using Flutter and Dart.',
+        'https://cdn-icons-png.flaticon.com/512/2920/2920329.png',
+      ),
+      _Skill(
+        'Web Development',
+        'Creating responsive and interactive web applications using modern technologies and frameworks.',
         'https://cdn-icons-png.flaticon.com/512/2721/2721297.png',
       ),
       _Skill(
-        'Frontend Development',
-        'Fast, responsive, and user-friendly interfaces built with React and modern UI frameworks like Tailwind CSS.',
-        'https://cdn-icons-png.flaticon.com/512/1055/1055687.png',
+        'State Management',
+        'Implementing scalable and maintainable architectures using BLoC, Cubit, Provider, and GetX.',
+        'https://cdn-icons-png.flaticon.com/512/3242/3242257.png',
       ),
       _Skill(
-        'Backend & API Development',
-        'Secure and efficient REST APIs using Node.js and Express, optimized for performance and scalability.',
-        'https://cdn-icons-png.flaticon.com/512/2721/2721269.png',
-      ),
-      _Skill(
-        'Database Design & Management',
-        'Well-structured MongoDB databases with optimized queries for speed, reliability, and data integrity.',
+        'Database Solutions',
+        'Managing local and cloud databases including Hive, sqflite, and MongoDB for optimal performance.',
         'https://cdn-icons-png.flaticon.com/512/4248/4248443.png',
       ),
       _Skill(
-        'Authentication & Authorization',
-        'Implementation of secure login systems using JWT, role-based access control, and best security practices.',
-        'https://cdn-icons-png.flaticon.com/512/3064/3064155.png',
+        'Cloud Infrastructure',
+        'Deploying and managing scalable applications using AWS services like EC2 and Route53.',
+        'https://cdn-icons-png.flaticon.com/512/4144/4144785.png',
       ),
       _Skill(
-        'E-Commerce Development',
-        'Product listings, cart systems, checkout flows, and payment gateway integrations for real-world applications.',
-        'https://cdn-icons-png.flaticon.com/512/3144/3144456.png',
+        'API Integration',
+        'Securely connecting mobile and web applications with robust RESTful APIs and backend services.',
+        'https://cdn-icons-png.flaticon.com/512/2721/2721269.png',
+      ),
+      _Skill(
+        'Clean Architecture',
+        'Structuring applications with Clean Architecture and MVC patterns for long-term maintainability.',
+        'https://cdn-icons-png.flaticon.com/512/2115/2115958.png',
       ),
       _Skill(
         'Performance Optimization',
-        'Improving load times, API response speed, and overall application performance for better user experience.',
+        'Improving app load times, rendering performance, and overall user experience.',
         'https://cdn-icons-png.flaticon.com/512/1828/1828919.png',
-      ),
-      _Skill(
-        'Deployment & Hosting Support',
-        'Deploying applications on cloud platforms with proper environment setup and production-ready configuration.',
-        'https://cdn-icons-png.flaticon.com/512/4144/4144785.png',
       ),
     ];
 
@@ -167,8 +167,11 @@ class _SkillCardState extends State<_SkillCard> {
                   height: 40.0,
                   color: AppColors.primary,
                   colorBlendMode: BlendMode.srcIn,
-                  errorBuilder: (context, error, stackTrace) =>
-                      const Icon(Icons.code, size: 40.0, color: AppColors.primary),
+                  errorBuilder: (context, error, stackTrace) => const Icon(
+                    Icons.code,
+                    size: 40.0,
+                    color: AppColors.primary,
+                  ),
                 ),
               ),
               const SizedBox(height: 12.0),
@@ -185,9 +188,9 @@ class _SkillCardState extends State<_SkillCard> {
               Text(
                 widget.skill.description,
                 textAlign: TextAlign.center,
-                maxLines: 3,
+                maxLines: 4,
                 style: GoogleFonts.inter(
-                  fontSize: 10.sp,
+                  fontSize: 12.sp,
                   color: AppColors.onSurfaceVariant,
                   height: 1.5,
                 ),
