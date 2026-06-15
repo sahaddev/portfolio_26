@@ -15,7 +15,7 @@ class AboutSection extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           bool isDesktop = constraints.maxWidth > 900;
-          
+
           if (isDesktop) {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -83,7 +83,7 @@ class _AboutContent extends StatelessWidget {
         ),
         SizedBox(height: 4.h),
         Text(
-          'I am a MERN Stack Web Developer focusing on building production-ready applications! I enjoy designing APIs, creating interactive user interfaces, and optimizing performance to deliver smooth and efficient user experiences.',
+          'Full Stack Mobile Developer with 2+ years of experience delivering high-quality mobile applications and end-to-end solutions. Passionate about building reliable, user-focused products and continuously improving through learning and innovation.',
           style: GoogleFonts.inter(
             fontSize: 12.sp,
             color: AppColors.onSurfaceVariant,
@@ -149,4 +149,3 @@ class _ResumeButton extends StatelessWidget {
     );
   }
 }
-
