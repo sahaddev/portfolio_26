@@ -149,8 +149,8 @@ class _TestimonialCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           gradient: LinearGradient(
             colors: [
-              const Color(0xFF3B82F6).withOpacity(0.5),
-              const Color(0xFFEF4444).withOpacity(0.5),
+              const Color(0xFF3B82F6).withValues(alpha: 0.5),
+              const Color(0xFFEF4444).withValues(alpha: 0.5),
             ],
           ),
         ),
@@ -162,7 +162,7 @@ class _TestimonialCard extends StatelessWidget {
               width: MediaQuery.of(context).size.width < 600 ? 90.w : 60.w,
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
               decoration: BoxDecoration(
-                color: const Color(0xFF1E293B).withOpacity(0.4),
+                color: const Color(0xFF1E293B).withValues(alpha: 0.4),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: SingleChildScrollView(
@@ -177,7 +177,7 @@ class _TestimonialCard extends StatelessWidget {
                           Icons.star_rounded,
                           color: index < testimonial.rating
                               ? const Color(0xFFFF8A00)
-                              : Colors.grey.withOpacity(0.3),
+                              : Colors.grey.withValues(alpha: 0.3),
                           size: 24.sp,
                         ),
                       ),
@@ -251,7 +251,7 @@ class _NavArrowState extends State<_NavArrow> {
             boxShadow: _isHovering
                 ? [
                     BoxShadow(
-                      color: const Color(0xFFEF4444).withOpacity(0.3),
+                      color: const Color(0xFFEF4444).withValues(alpha: 0.3),
                       blurRadius: 15,
                     ),
                   ]
@@ -279,7 +279,7 @@ class _PageIndicator extends StatelessWidget {
         shape: BoxShape.circle,
         color: isActive
             ? const Color(0xFFEF4444)
-            : Colors.white.withOpacity(0.3),
+            : Colors.white.withValues(alpha: 0.3),
       ),
     );
   }
