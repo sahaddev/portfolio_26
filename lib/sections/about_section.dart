@@ -18,23 +18,23 @@ class AboutSection extends StatelessWidget {
       color: AppColors.surface, // Using surface color for a subtle layer shift
       child: LayoutBuilder(
         builder: (context, constraints) {
-          bool isDesktop = constraints.maxWidth > 900;
+          bool isMobile = constraints.maxWidth <= 900;
 
-          if (isDesktop) {
+          if (!isMobile) {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Expanded(flex: 4, child: _PortraitImage()),
+                Expanded(flex: 4, child: _PortraitImage(isMobile: false)),
                 SizedBox(width: 8.w),
-                Expanded(flex: 6, child: _AboutContent()),
+                Expanded(flex: 6, child: _AboutContent(isMobile: false)),
               ],
             );
           } else {
             return Column(
               children: [
-                _PortraitImage(),
+                _PortraitImage(isMobile: true),
                 SizedBox(height: 6.h),
-                _AboutContent(),
+                _AboutContent(isMobile: true),
               ],
             );
           }
@@ -45,11 +45,14 @@ class AboutSection extends StatelessWidget {
 }
 
 class _PortraitImage extends StatelessWidget {
+  final bool isMobile;
+  const _PortraitImage({this.isMobile = false});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50.h,
-      width: 45.w,
+      height: isMobile ? 40.h : 50.h,
+      width: isMobile ? 80.w : 45.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15), // 1.5rem
         boxShadow: [
@@ -69,36 +72,43 @@ class _PortraitImage extends StatelessWidget {
 }
 
 class _AboutContent extends StatelessWidget {
+  final bool isMobile;
+  const _AboutContent({this.isMobile = false});
+
   @override
   Widget build(BuildContext context) {
+    final textAlign = isMobile ? TextAlign.center : TextAlign.left;
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
         Text(
           'About Me',
           style: GoogleFonts.inter(
-            fontSize: 22.sp,
+            fontSize: isMobile ? 24.sp : 22.sp,
             fontWeight: FontWeight.bold,
             color: AppColors.onSurface,
           ),
+          textAlign: textAlign,
         ),
         SizedBox(height: 4.h),
         Text(
           'Full Stack Mobile Developer with 2+ years of experience delivering high-quality mobile applications and end-to-end solutions. Passionate about building reliable, user-focused products and continuously improving through learning and innovation.',
           style: GoogleFonts.inter(
-            fontSize: 12.sp,
+            fontSize: isMobile ? 14.sp : 12.sp,
             color: AppColors.onSurfaceVariant,
             height: 1.6,
           ),
+          textAlign: textAlign,
         ),
         SizedBox(height: 2.h),
         Text(
           'Along with strong problem-solving skills, I follow clean architecture principles and modern development patterns. I\'m passionate about writing maintainable code, improving UI/UX flows, and building applications that feel fast, secure, and intuitive. I actively explore new tools in the MERN ecosystem to stay updated and keep improving my development workflow.',
           style: GoogleFonts.inter(
-            fontSize: 12.sp,
+            fontSize: isMobile ? 14.sp : 12.sp,
             color: AppColors.onSurfaceVariant,
             height: 1.6,
           ),
+          textAlign: textAlign,
         ),
         SizedBox(height: 6.h),
         const _ResumeButton(),

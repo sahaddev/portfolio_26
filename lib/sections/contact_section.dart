@@ -416,7 +416,7 @@ class _SubmitButtonState extends State<_SubmitButton> {
 
     final success = await widget.controller.submitForm();
 
-    if (!mounted) return;
+    if (!context.mounted) return;
 
     if (success) {
       ScaffoldMessenger.of(context).showSnackBar(

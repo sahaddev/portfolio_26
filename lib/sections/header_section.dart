@@ -44,22 +44,23 @@ class HeaderSection extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
                 child: LayoutBuilder(
                   builder: (context, constraints) {
-                    if (constraints.maxWidth < 900) {
+                    final isMobile = constraints.maxWidth < 900;
+                    if (isMobile) {
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          _HeroContent(onNavTap),
+                          _HeroContent(onNavTap, isMobile: true),
                           SizedBox(height: 10.h),
-                          _ProfileIllustration(),
+                          _ProfileIllustration(isMobile: true),
                         ],
                       );
                     }
                     return Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Expanded(flex: 5, child: _HeroContent(onNavTap)),
+                        Expanded(flex: 5, child: _HeroContent(onNavTap, isMobile: false)),
                         SizedBox(width: 5.w),
-                        Expanded(flex: 5, child: _ProfileIllustration()),
+                        Expanded(flex: 5, child: _ProfileIllustration(isMobile: false)),
                       ],
                     );
                   },
@@ -122,6 +123,21 @@ class _Navbar extends StatelessWidget {
                     _navItem('Contact', onTap: () => onNavTap?.call('Contact')),
                     SizedBox(width: 4.w),
                     _HireMeButton(onNavTap),
+                  ],
+                )
+              else
+                PopupMenuButton<String>(
+                  icon: const Icon(Icons.menu),
+                  color: AppColors.surfaceVariant,
+                  onSelected: (value) {
+                    onNavTap?.call(value);
+                  },
+                  itemBuilder: (BuildContext context) => [
+                    PopupMenuItem(value: 'Home', child: Text('Home', style: GoogleFonts.inter(color: AppColors.onSurface))),
+                    PopupMenuItem(value: 'About', child: Text('About', style: GoogleFonts.inter(color: AppColors.onSurface))),
+                    PopupMenuItem(value: 'Services', child: Text('Services', style: GoogleFonts.inter(color: AppColors.onSurface))),
+                    PopupMenuItem(value: 'Projects', child: Text('Projects', style: GoogleFonts.inter(color: AppColors.onSurface))),
+                    PopupMenuItem(value: 'Contact', child: Text('Contact', style: GoogleFonts.inter(color: AppColors.onSurface))),
                   ],
                 ),
             ],
@@ -212,8 +228,9 @@ class _HireMeButton extends StatelessWidget {
 }
 
 class _HeroContent extends StatelessWidget {
-  const _HeroContent(this.onNavTap);
+  const _HeroContent(this.onNavTap, {this.isMobile = false});
   final Function(String)? onNavTap;
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
@@ -266,7 +283,7 @@ class _HeroContent extends StatelessWidget {
         ),
         SizedBox(height: 2.h),
         ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 40.w),
+          constraints: BoxConstraints(maxWidth: isMobile ? 90.w : 40.w),
           child: Text(
             'I build scalable full-stack applications using Flutter, Node.js, and MongoDB. I love clean code and fast UIs.',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -371,16 +388,24 @@ class _SecondaryButton extends StatelessWidget {
 }
 
 class _ProfileIllustration extends StatelessWidget {
+  final bool isMobile;
+  const _ProfileIllustration({this.isMobile = false});
+
   @override
   Widget build(BuildContext context) {
+    final auraSize = isMobile ? 80.w : 40.w;
+    final bgSize = isMobile ? 56.w : 28.w;
+    final radius = isMobile ? 36.w : 18.w;
+    final imageSize = isMobile ? 64.w : 32.w;
+
     return Center(
       child: Stack(
         alignment: Alignment.center,
         children: [
           // Luminescent Glow (Aura)
           Container(
-            width: 40.w,
-            height: 40.w,
+            width: auraSize,
+            height: auraSize,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: RadialGradient(
@@ -393,8 +418,8 @@ class _ProfileIllustration extends StatelessWidget {
           ),
           // Background Glow for image separation
           Container(
-            width: 28.w,
-            height: 28.w,
+            width: bgSize,
+            height: bgSize,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               boxShadow: [
@@ -410,7 +435,6 @@ class _ProfileIllustration extends StatelessWidget {
           // Floating Glass Icons
           ...List.generate(4, (index) {
             final angle = index * (2 * math.pi / 4) + (math.pi / 3.2);
-            final radius = 18.w;
             return Transform.translate(
               offset: Offset(
                 radius * math.cos(angle),
@@ -421,8 +445,8 @@ class _ProfileIllustration extends StatelessWidget {
           }),
           // Circular Image
           Container(
-            width: 32.w,
-            height: 32.w,
+            width: imageSize,
+            height: imageSize,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
