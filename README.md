@@ -1,16 +1,26 @@
-# portfolio_26
+# Sahad MP - Senior Developer Portfolio
 
-A new Flutter project.
+Welcome to my portfolio! I am a passionate Senior Developer with a proven track record of designing, building, and delivering high-quality, scalable applications. This repository showcases my latest projects, technical skills, and contributions.
 
-## Getting Started
+## 🚀 About Me
 
-This project is a starting point for a Flutter application.
+- 💻 Senior Developer specializing in Mobile (Flutter/Dart) and robust backend solutions.
+- 🏗️ Architecting scalable, maintainable, and high-performance applications.
+- 🤝 Passionate about mentoring, clean code, and agile methodologies.
+- 🌟 Constantly exploring new technologies to solve complex problems effectively.
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠️ Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Mobile:** Flutter, Dart
+- **Backend:** Node.js, Python, Firebase, SQL/NoSQL
+- **DevOps/Tools:** Git, CI/CD, Docker
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📸 Portfolio Preview
+
+Here is a glimpse of my recent work:
+
+![Portfolio](./portfolio.png)
+
+## 📬 Let's Connect!
+
+Feel free to reach out if you want to collaborate, discuss tech, or just say hi!
