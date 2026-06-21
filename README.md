@@ -2,6 +2,7 @@
 
 Welcome to my portfolio! I am a passionate Senior Developer with a proven track record of designing, building, and delivering high-quality, scalable applications. This repository showcases my latest projects, technical skills, and contributions.
 
+🌐 **Live Portfolio:** [sahadmp.netlify.app](https://sahadmp.netlify.app)
 ## 🚀 About Me
 
 - 💻 Senior Developer specializing in Mobile (Flutter/Dart) and robust backend solutions.
